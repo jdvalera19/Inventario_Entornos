@@ -17,28 +17,32 @@ import jakarta.persistence.Table;
  * @author USUARIO
  */
 @Entity
-@Table (name= Usuario.TABLE_NAME)
+@Table(name = Venta.TABLE_NAME)
 public class Venta {
-    
-    
+
+    public static final String TABLE_NAME = "venta";
+
     //Atributos
-    public static final String TABLE_NAME="venta";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
+
     @ManyToOne
-    @JoinColumn(name="idUsuario")
+    @JoinColumn(name = "idUsuario")
     private Usuario idUsuario;
-    
+
     @ManyToOne
-    @JoinColumn(name="idProducto")
+    @JoinColumn(name = "idProducto")
     private Producto idProducto;
-    
+
     private int cantidadVendida;
     private Double valorVenta;
 
     public Venta() {
+    }
+
+    public Venta(int id) {
+        this.id = id;
     }
 
     public Venta(int id, Usuario idUsuario, Producto idProducto, int cantidadVendida, Double valorVenta) {
@@ -97,8 +101,5 @@ public class Venta {
     public String toString() {
         return "Venta{" + "id=" + id + ", idUsuario=" + idUsuario + ", idProducto=" + idProducto + ", cantidadVendida=" + cantidadVendida + ", valorVenta=" + valorVenta + '}';
     }
- 
-    
-    
-    
+
 }
